@@ -11,27 +11,8 @@ export class InstagramFeedService {
 
   public getHomePageInstaData(): Observable<any> {
     // const url = `${environment.instagramFeed.homePageUrl}${environment.instagramFeed.authorizationKey}`;
+    const token = 'youwish';
+    const url = `https://graph.instagram.com/me/media?fields=caption,media_url,media_type,children{media_url, media_type},permalink,timestamp,username&limit=5&access_token=${token}`;
     return this.http.get(url);
   }
-
-  public getAllInstaData(): Observable<any> {
-    // const url = `${environment.instagramFeed.url}${environment.instagramFeed.authorizationKey}`;
-    return this.http.get(url);
-  }
-
-  // Copilot made this. Can I use this?
-  // public formatInstaData(data: any): any {
-  //   const formattedData = data.data.map((item: any) => {
-  //     return {
-  //       id: item.id,
-  //       media_type: item.media_type,
-  //       media_url: item.media_url,
-  //       username: item.username,
-  //       timestamp: item.timestamp,
-  //       permalink: item.permalink,
-  //       caption: item.caption,
-  //     };
-  //   });
-  //   return formattedData;
-  // }
 }
